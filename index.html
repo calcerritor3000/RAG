@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Base — Solo vectores</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="head">
+        <h1>RAG base</h1>
+        <p class="tag">Sin IA · Solo ChromaDB + similitud semantica</p>
+      </header>
+
+      <section class="explain">
+        <h2>¿Que hace este ejercicio?</h2>
+        <ol>
+          <li><strong>Ingesta:</strong> parte tu texto en trozos (chunks) y guarda <em>embeddings</em> en ChromaDB.</li>
+          <li><strong>Busqueda:</strong> con una pregunta, devuelve los <strong>chunks mas parecidos</strong> (raw).</li>
+        </ol>
+        <p class="warn">No hay respuesta bonita para humanos. Eso es el ejercicio <strong>RAG + IA</strong>.</p>
+      </section>
+
+      <section class="panel">
+        <h3>Paso 1 — Cargar documento (.txt)</h3>
+        <form id="ingestForm">
+          <input type="file" id="fileInput" accept=".txt" required />
+          <button type="submit">Guardar en ChromaDB</button>
+        </form>
+        <p id="ingestMsg"></p>
+      </section>
+
+      <section class="panel">
+        <h3>Paso 2 — Buscar chunks similares</h3>
+        <form id="searchForm">
+          <input type="text" id="questionInput" placeholder="Tu pregunta..." required />
+          <button type="submit">Buscar</button>
+        </form>
+        <p id="searchMsg"></p>
+      </section>
+
+      <section class="results" id="results" hidden>
+        <h3>Resultado: chunks crudos (lo que pide el profesor)</h3>
+        <p class="q" id="questionShown"></p>
+        <div id="chunksBox"></div>
+      </section>
+
+      <p class="api-link">API: <a href="/docs">/docs</a></p>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
